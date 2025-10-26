@@ -18,10 +18,20 @@ Monthly sales data is delivered as CSV files into an Amazon S3 bucket, but the r
 - How to integrate EMR with Amazon S3
 - How to integrate S3 bucket with Amazon Athena
 
-# STEP 1
+## STEP 1
+
+We are configuring Amazon EC2 for compute resources, Amazon EMR for scalable data processing, and Amazon S3 as the central data storage layer.
+
 - Open EC2 instance and create key pair by giving name.
   
 choose private key file format .pem or .ppk based on your usage.
 ![EC2 KeyPair](Images/EC2-KeyPair.PNG)
 
+- Configure the EMR cluster by specifying the cluster name, keeping the default settings, and assigning the appropriate IAM role to the EC2 instances and Choose your previously created EC2 key pair under Security and Access.
+![EMR Cluster](Images/EMR-Cluster.PNG)
+
+- Set up an S3 bucket for data storage, then add two subfolders: raw_file for raw data and transformed_file for processed data.
+![S3](Images/S3.PNG)
+
+- 
 
