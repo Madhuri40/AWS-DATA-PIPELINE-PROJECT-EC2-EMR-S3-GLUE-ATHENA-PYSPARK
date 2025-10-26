@@ -22,4 +22,6 @@ Monthly sales data is delivered as CSV files into an Amazon S3 bucket, but the r
 - Open EC2 instance and create key pair by giving name.
   
 choose private key file format .pem or .ppk based on your usage.
+![EC2 KeyPair](Images/EC2-KeyPair.PNG)
+
 
