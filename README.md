@@ -93,3 +93,5 @@ With the Glue Data Catalog table created, we can now use Amazon Athena to query 
 
 
 
+
+
