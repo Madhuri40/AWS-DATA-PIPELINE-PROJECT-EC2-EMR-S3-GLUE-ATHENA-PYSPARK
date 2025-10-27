@@ -45,6 +45,17 @@ choose private key file format .pem or .ppk based on your usage.
 - I used WinSCP to transfer the script to the EMR cluster by providing the host name, and then connected to the cluster using PuTTY with the .ppk key file.
 ![EMR-Cluster2](Images/EMR-Cluster2.PNG)
 
+- After connecting to the cluster, run the sales.py script and submit it as a PySpark job.
+## Submit : spark-submit sales.py
+![Solution](Images/Solution.PNG)
+
+- After the job completes, check the transformed_file sub folder in the S3 bucket to view the processed data in Parquet format.
+
+
+
+
+
+
 
 
 
