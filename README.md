@@ -33,5 +33,17 @@ choose private key file format .pem or .ppk based on your usage.
 - Set up an S3 bucket for data storage, then add two subfolders: raw_file for raw data and transformed_file for processed data.
 ![S3](Images/S3.PNG)
 
-- 
+-- Under raw_file upload the Salesdata.CSV 
+
+
+- Open Security Groups and Add an inbound rule to the master node's security group to allow access from your IP address.
+  ![SecurityGroups](Images/SecurityGroups.PNG)
+
+  ## STEP 2
+  After setting up the required AWS resources, connect to the EMR cluster and run the PySpark script. Since I'm using Windows, there are several ways to transfer the script from the local machine to the cluster and execute it.
+
+- Im using WinScp to transfer the script to cloud by providing Host Name and Connect to emr from the putty with the .ppk file.
+
+
+
 
