@@ -77,11 +77,15 @@ With the Glue Data Catalog table created, we can now use Amazon Athena to query 
 ## 2 Querying output data using Amazon Athena standard SQL
 - Open Athena query editor, you can keep Data Source as the default AwsDataCatalog and select sales-db for Database and run the following query.
 
-### SELECT * FROM "sales-db"."transformed_file";
+-  SELECT * FROM "sales-db"."transformed_file";
 
-### SELECT count(*) FROM "sales-db"."transformed_file";
+- SELECT count(*) FROM "sales-db"."transformed_file";
 
 ![Athena](Images/Athena.PNG)
+
+
+### Conclusion:
+In conclusion, we established a complete data processing workflow on AWS. We ingested raw data into S3, processed it using PySpark on an EMR cluster, and stored the results back in S3 in Parquet format for efficient storage and performance. By cataloging the processed data with AWS Glue and querying it through Amazon Athena, we enabled seamless, SQL-based access for data analytics and reporting. This setup provides a scalable, cost-effective, and production-ready foundation for future data processing and analytics needs.
 
 
 
