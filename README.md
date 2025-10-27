@@ -42,7 +42,8 @@ choose private key file format .pem or .ppk based on your usage.
   ## STEP 2
   After setting up the required AWS resources, connect to the EMR cluster and run the PySpark script. Since I'm using Windows, there are several ways to transfer the script from the local machine to the cluster and execute it.
 
-- Im using WinScp to transfer the script to cloud by providing Host Name and Connect to emr from the putty with the .ppk file.
+- I used WinSCP to transfer the script to the EMR cluster by providing the host name, and then connected to the cluster using PuTTY with the .ppk key file.
+![EMR-Cluster2](Images/EMR-Cluster2.PNG)
 
 
 
