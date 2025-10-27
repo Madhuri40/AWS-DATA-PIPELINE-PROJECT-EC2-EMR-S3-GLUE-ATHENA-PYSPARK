@@ -39,7 +39,7 @@ choose private key file format .pem or .ppk based on your usage.
 - Open Security Groups and Add an inbound rule to the master node's security group to allow access from your IP address.
   ![SecurityGroups](Images/SecurityGroups.PNG)
 
-  ## STEP 2
+## STEP 2
   After setting up the required AWS resources, connect to the EMR cluster and run the PySpark script. Since I'm using Windows, there are several ways to transfer the script from the local machine to the cluster and execute it.
 
 - I used WinSCP to transfer the script to the EMR cluster by providing the host name, and then connected to the cluster using PuTTY with the .ppk key file.
@@ -50,6 +50,40 @@ choose private key file format .pem or .ppk based on your usage.
 ![Solution](Images/Solution.PNG)
 
 - After the job completes, check the transformed_file sub folder in the S3 bucket to view the processed data in Parquet format.
+
+## STEP 3
+
+The transformed data is now stored in Amazon S3 in Parquet format. To make it easier for data analysts and data scientists to query using SQL, we can expose it as a database table.
+This can be done in two steps:
+
+1.Run an AWS Glue Crawler to create a table in the Glue Data Catalog based on the S3 data.
+
+2.Use Amazon Athena to query and validate the results.
+
+
+## 1 Creating an AWS Glue Data Catalog
+- Navigate to the AWS Glue crawler console and click on Create Crawler.
+- Give a name for the Glue Crawler (sales-crawler)
+- Add the data source as S3 bucket where you have your transformed and processed data (s3://etl-emr-sales/transformed_file)
+- Attach the IAM role (AWSGlueServiceRole-default)
+- Create a database by clicking on Add database and select the same from dropdown menu (sales-db)
+- Review and verify all the details and click on Create crawler.
+- Once the crawler is created, select the crawler and click on Run
+- Once the crawler finishes its run, you will see detected tables
+![Glue](Images/Glue.PNG)
+
+With the Glue Data Catalog table created, we can now use Amazon Athena to query the data with SQL.
+
+## 2 Querying output data using Amazon Athena standard SQL
+- Open Athena query editor, you can keep Data Source as the default AwsDataCatalog and select sales-db for Database and run the following query.
+
+### SELECT * FROM "sales-db"."transformed_file";
+
+### SELECT count(*) FROM "sales-db"."transformed_file";
+
+![Athena](Images/Athena.PNG)
+
+
 
 
 
